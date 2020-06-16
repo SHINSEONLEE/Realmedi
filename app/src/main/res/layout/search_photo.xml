@@ -9,9 +9,9 @@
         tools:context="org.techtown.mediclock.Mainmenu" >
 
         <ImageView
-            android:id="@+id/iv"
-            android:layout_width="300dp"
-            android:layout_height="300dp" />
+    android:id="@+id/iv"
+    android:layout_width="300dp"
+    android:layout_height="300dp" />
 
         <Button
             android:id="@+id/btn"
