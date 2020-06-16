@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">약 묵 자</string>
+    <string name="mymeditime">설정하실 시간을 \n선택해주세요. </string>
+    <string name="mymeditimehour"> 설정하실 시간을 선택해주세요.</string>
+    <string name="mymeditimemin"> 설정하실 \'분\'을 선택해주세요.</string>
+    <string name="mymedirepeat">설정하실 주기를\n 골라주세요.</string>
+    <string name="mymediweek">요일을 모두 선택해주세요.\n 중복선택 가능합니다. </string>
+    <string name="mymediweekdays">며칠마다 반복해 알람을 울릴지\n 일일 주기를 설정해주세요.</string>
+    <string name="mymedialarm">\'혈압약\'\n 먹을 시간\n 입니다.</string>
+    <string name="mymedihowtouse">이용약관에 대해서 설명~~~신선이가 알려조</string>
+    <string name="mymediintroduction">약묵자에 대한 앱 소개~~~ 신선이가 알려조</string>
+</resources>
