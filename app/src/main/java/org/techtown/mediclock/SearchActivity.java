@@ -4,12 +4,14 @@ package org.techtown.mediclock;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -100,6 +102,7 @@ public class SearchActivity extends AppCompatActivity {
 }*/
 
 
+    ImageView iv = null;
 
 @Override
 protected void onCreate(Bundle savedInstanceState) {
@@ -146,8 +149,28 @@ protected void onCreate(Bundle savedInstanceState) {
             startActivity(intent_search_list);
         }
     });
+    setup();
 
 }
+    private void setup() {
+        Button button = (Button) findViewById(R.id.photo_searchbtn);
+        iv = (ImageView) findViewById(R.id.iv);
+
+        button.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v)
+            {
+                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                startActivityForResult(intent,1);
+            }
+        });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data)
+    {
+        iv.setImageURI(data.getData());
+    }
 }
 
 

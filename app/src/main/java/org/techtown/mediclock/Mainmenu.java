@@ -5,12 +5,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -57,12 +59,14 @@ public class Mainmenu extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+    ImageView iv = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_mainmenu);
         Mainmenu.context = getApplicationContext();
+
 
         actionBar = getSupportActionBar();
         //actionBar.setLogo(R.drawable.home2); 약묵자 로고 넣으면 좋을 것 같은데
@@ -133,9 +137,28 @@ public class Mainmenu extends AppCompatActivity {
                 startActivity(intent_description);
             }
         });
-
+        setup();
     }
     public static Context getAppContext() {
         return Mainmenu.context;
+    }
+    private void setup() {
+        Button camera = (Button) findViewById(R.id.button2);
+        iv = (ImageView) findViewById(R.id.iv);
+
+        camera.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v)
+            {
+                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                startActivityForResult(intent,1);
+            }
+        });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data)
+    {
+        iv.setImageURI(data.getData());
     }
 }
