@@ -38,6 +38,8 @@ public class SearchActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
 <<<<<<< Updated upstream
         setContentView(R.layout.activity_search);
 
@@ -142,8 +144,8 @@ protected void onCreate(Bundle savedInstanceState) {
     button3.setOnClickListener(new View.OnClickListener(){
         @Override
         public void onClick(View v) {
-            Intent intent_search_list = new Intent(getApplicationContext(),  Search_List.class); //일단 바로 검색결과 띄음
-            startActivity(intent_search_list);
+            Intent text_intent = new Intent (getApplicationContext(), TextresultActivity.class); //일단 바로 검색결과 띄음
+            startActivity(text_intent);
         }
     });
 
