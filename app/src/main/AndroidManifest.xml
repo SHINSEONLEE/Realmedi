@@ -13,7 +13,9 @@
 
 
     <uses-permission android:name="android.permission.INTERNET" />
-
+    <uses-permission android:name="android.permission.CAMERA"></uses-permission> <!--카메라 권한-->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"></uses-permission>    <!--저장소 읽기 권한-->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>    <!--저장소 쓰기 권한-->
 
     <application
         android:allowBackup="true"
@@ -42,17 +44,18 @@
             android:windowSoftInputMode="stateAlwaysHidden" />
 
 
-
+        <activity android:name=".Show_morning" />
         <activity android:name=".BarcodeActivity" />
         <activity android:name=".AlarmList" />
         <activity android:name=".Description"/>
         <activity android:name=".Howtouse"/>
         <activity android:name=".TimePickerAlarm"/>
         <activity android:name=".Introduction"/>
-        <activity android:name=".Search_Photo"/>
+
         <activity android:name=".Mymeditime_min"/>
         <activity android:name=".Medialarm"/>
-        <activity android:name=".Medimorning"/>
+        <activity android:name=".Medimorning"
+            android:configChanges="orientation|keyboardHidden"/>
         <activity android:name=".Mediname"/>
         <activity android:name=".Medirepeat"/>
         <activity android:name=".Meditime"/>
@@ -66,6 +69,21 @@
         <activity android:name=".ShareActivity"/>
         <activity android:name=".ShareAlarm"/>
         <activity android:name=".WritecodeActivity"/>
+
+
+        <activity android:name=".Search_Photo"
+            android:configChanges="orientation|keyboardHidden"/> <!--화면 회전시 데이터 새로고침 방지-->
+
+
+        <provider
+            android:name= "androidx.core.content.FileProvider"
+            android:authorities="org.techtown.mediclock.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths"></meta-data>
+        </provider>
 
         <receiver android:name=".DeviceBootReceiver"
             android:enabled="false">

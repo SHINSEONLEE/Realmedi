@@ -58,23 +58,15 @@ public class SeecodeActivity extends AppCompatActivity {
         setContentView(R.layout.fragment_seecode);
 
         actionBar = getSupportActionBar();
-        //actionBar.setLogo(R.drawable.home2); 약묵자 로고 넣으면 좋을 것 같은데
-        actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_HOME | ActionBar.DISPLAY_USE_LOGO);
-
-
-        //액션바 설정하기//
-        //액션바 타이틀 변경하기
-        getSupportActionBar().setTitle("App");
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(0xff006aff));
+        getSupportActionBar().setTitle("약 묵 자");
         //액션바 배경색 변경#368AFF
-        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(0xFF339999));
-        //홈버튼 표시
-        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         TextView seecode = findViewById(R.id.seecode);
         TelephonyManager tm = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
 
         String android_id = Settings.Secure.getString(this.getContentResolver(), Settings.Secure.ANDROID_ID);
-
+        android_id = android_id.substring(8);
         //Log.d(TAG, android_id);
         // String android_id="088738928";
         //int id2 = Integer.parseInt(android_id);

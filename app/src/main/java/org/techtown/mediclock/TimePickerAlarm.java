@@ -7,16 +7,20 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.telephony.TelephonyManager;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.text.SimpleDateFormat;
@@ -35,11 +39,35 @@ import static org.techtown.mediclock.Mediweek.tue_pr;
 import static org.techtown.mediclock.Mediweek.wed_pr;
 
 public class TimePickerAlarm extends AppCompatActivity {
+    ActionBar actionBar;
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        //or switch문을 이용하면 될듯 하다.
+        if (id == R.id.gotohome) {
+            Intent homeIntent = new Intent(this, Mainmenu.class);
+            startActivity(homeIntent);
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.timepicker_alarm);
+        actionBar = getSupportActionBar();
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(0xff006aff));
+        getSupportActionBar().setTitle("약 묵 자");
+        //액션바 배경색 변경#368AFF
+
+
 
         TelephonyManager tm = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
 
@@ -90,7 +118,7 @@ public class TimePickerAlarm extends AppCompatActivity {
             public void onClick(View arg0) {
 
                 int hour, hour_24, minute;
-                String am_pm, weekpr;
+                String am_pm, weekpr = null;
 
                 if (Build.VERSION.SDK_INT >= 23) {
                     hour_24 = picker.getHour();
@@ -177,7 +205,7 @@ public class TimePickerAlarm extends AppCompatActivity {
 
                 //TelephonyManager tm = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
                 //String android_id = Settings.Secure.getString(this.getContentResolver(), Settings.Secure.ANDROID_ID);
-                new Server.Update_alarmList( android_id,  date_text , date_text ).execute("http://192.168.23.164:3306/insert");
+                new Server.Update_alarmList( android_id,  weekpr , date_text ).execute("http://192.168.23.164:3306/insert");
                 //( [사용자 id] ,  [시간] , [day] ).
 
                 //  Preference에 설정한 값 저장
@@ -189,7 +217,6 @@ public class TimePickerAlarm extends AppCompatActivity {
                 diaryNotification(calendar);
                 Intent intent_mainmenu = new Intent(getApplicationContext(),AlarmList.class); //다음 액티비티 화면으로 전환
                 startActivity(intent_mainmenu);
-
             }
 
         });

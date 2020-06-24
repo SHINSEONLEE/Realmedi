@@ -32,4 +32,6 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     implementation 'com.journeyapps:zxing-android-embedded:3.6.0'
+
+    implementation 'com.rmtheis:tess-two:9.0.0'
 }

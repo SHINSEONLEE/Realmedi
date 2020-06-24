@@ -45,5 +45,6 @@
             android:layout_weight="1"
             android:text="텍스트 검색"
             android:textSize="30sp" />
+
     </LinearLayout>
 </LinearLayout>

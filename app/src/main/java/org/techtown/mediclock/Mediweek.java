@@ -1,6 +1,5 @@
 package org.techtown.mediclock;
 
-import android.app.ActionBar;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Intent;
@@ -17,6 +16,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
@@ -25,6 +25,7 @@ import java.util.Calendar;
 
 public class Mediweek extends AppCompatActivity {
     ActionBar actionBar;
+
     private static final String BASE_PATH = Environment.getExternalStorageDirectory() + "/myapp";
     private static final String NORMAL_PATH = BASE_PATH + "/normal";
     public static boolean mon_pr = false;
@@ -65,21 +66,11 @@ public class Mediweek extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_mediweek);
-
-        actionBar = getActionBar();
-        //actionBar.setLogo(R.drawable.home2); 약묵자 로고 넣으면 좋을 것 같은데
-        //actionBar.setDisplayOptions(androidx.appcompat.app.ActionBar.DISPLAY_SHOW_HOME | androidx.appcompat.app.ActionBar.DISPLAY_USE_LOGO);
-
-
-        //액션바 설정하기//
-        //액션바 타이틀 변경하기
-        getSupportActionBar().setTitle("App");
+        actionBar = getSupportActionBar();
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(0xff006aff));
+        getSupportActionBar().setTitle("약 묵 자");
         //액션바 배경색 변경#368AFF
-        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(0xFF339999));
-        //홈버튼 표시
-        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        //private boolean check = false;
         final Button mon = findViewById(R.id.mon);
         final Button tue = findViewById(R.id.tue);
         final Button wed = findViewById(R.id.wed);

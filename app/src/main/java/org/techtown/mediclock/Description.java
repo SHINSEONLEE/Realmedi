@@ -14,7 +14,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 public class Description extends AppCompatActivity {
-    ActionBar actionBar;
  /*   @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         ViewGroup rootView  = (ViewGroup) inflater.inflate(R.layout.fragment_description, container, false); //container 라는 뷰 안에 첫번째 인자를 넣어줘라, 메모리에 올려준 것
@@ -30,11 +29,13 @@ public class Description extends AppCompatActivity {
         return rootView;
     }
 }*/
- @Override
- public boolean onCreateOptionsMenu(Menu menu) {
-     getMenuInflater().inflate(R.menu.menu, menu);
-     return true;
- }
+ ActionBar actionBar;
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
+    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -51,19 +52,11 @@ public class Description extends AppCompatActivity {
  protected void onCreate(Bundle savedInstanceState) {
      super.onCreate(savedInstanceState);
      setContentView(R.layout.fragment_description);
-
      actionBar = getSupportActionBar();
-     //actionBar.setLogo(R.drawable.home2); 약묵자 로고 넣으면 좋을 것 같은데
-     actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_HOME | ActionBar.DISPLAY_USE_LOGO);
-
-
-     //액션바 설정하기//
-     //액션바 타이틀 변경하기
-     getSupportActionBar().setTitle("App");
+     getSupportActionBar().setBackgroundDrawable(new ColorDrawable(0xff006aff));
+     getSupportActionBar().setTitle("약 묵 자");
      //액션바 배경색 변경#368AFF
-     getSupportActionBar().setBackgroundDrawable(new ColorDrawable(0xFF339999));
-     //홈버튼 표시
-     //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
 
      Button button1 = findViewById(R.id.howtouse_btn);
      button1.setOnClickListener(new View.OnClickListener(){
