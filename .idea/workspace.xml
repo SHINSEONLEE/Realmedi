@@ -11,31 +11,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5c09865f-657c-4f20-bcf9-4dd2b52bdb71" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_rmtheis_tess_two_9_0_0_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/org/techtown/mediclock/alarmsetlist.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/alarm_set_list.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.6.4/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.4/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.6.4/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.4/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.6.4/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.4/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.6.4/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.4/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.6.4/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.4/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.6.4/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.4/javaCompile/classAnalysis.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.6.4/javaCompile/jarAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.4/javaCompile/jarAnalysis.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.6.4/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.4/javaCompile/javaCompile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.6.4/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.4/javaCompile/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_journeyapps_zxing_android_embedded_3_6_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_journeyapps_zxing_android_embedded_3_6_0_aar.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/org/techtown/mediclock/AlarmList.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/org/techtown/mediclock/AlarmList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/org/techtown/mediclock/ConstantDefine.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/org/techtown/mediclock/ConstantDefine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/org/techtown/mediclock/Mainmenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/org/techtown/mediclock/Mainmenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/org/techtown/mediclock/Mediname.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/org/techtown/mediclock/Mediname.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/org/techtown/mediclock/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/org/techtown/mediclock/Server.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/org/techtown/mediclock/SeecodeActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/org/techtown/mediclock/SeecodeActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/org/techtown/mediclock/TimePickerAlarm.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/org/techtown/mediclock/TimePickerAlarm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/alarm_list.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/alarm_list.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_mainmenu.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_mainmenu.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/local.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/medimorning2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/medimorning2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/searxh_photo2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/searxh_photo2.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -84,9 +71,9 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="android.sdk.path" value="$PROJECT_DIR$/../Library/Android/sdk" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="project.structure.last.edited" value="SDK Location" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.17" />
-    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="preferences.editor" />
   </component>
   <component name="RunDashboard">

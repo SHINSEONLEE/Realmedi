@@ -25,6 +25,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/scrollView"
                 android:gravity="center"
+                android:textSize = "30sp"
                 android:text="처리시간" />
 
             <TextView
@@ -33,6 +34,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/scrollView"
                 android:gravity="center"
+                android:textSize = "30sp"
                 android:text="@string/FirstMessage" />
 
             <ImageView
@@ -47,12 +49,13 @@
 
     <Button
         android:id="@+id/btn_OCR"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="20dp"
         android:gravity="center"
+        android:textSize = "30sp"
         android:text="사진찍기" />
 
 </RelativeLayout>

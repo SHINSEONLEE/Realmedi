@@ -3,6 +3,7 @@ package org.techtown.mediclock;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.ComponentName;
+import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -37,11 +38,40 @@ import static org.techtown.mediclock.Mediweek.sun_pr;
 import static org.techtown.mediclock.Mediweek.thur_pr;
 import static org.techtown.mediclock.Mediweek.tue_pr;
 import static org.techtown.mediclock.Mediweek.wed_pr;
+import android.Manifest;
+import android.content.Context;
+import android.content.Intent;
+import android.content.pm.ActivityInfo;
+import android.content.pm.PackageManager;
+import android.graphics.drawable.ColorDrawable;
+import android.nfc.Tag;
+import android.os.Bundle;
+import android.provider.Settings;
+import android.telephony.TelephonyManager;
+import android.util.Log;
+import android.support.v4.app.*;
+
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.fragment.app.Fragment;
+
+import org.w3c.dom.Text;
 
 public class TimePickerAlarm extends AppCompatActivity {
     //private Mediname mediname;
     ActionBar actionBar;
     String giveRealmedi;
+    String android_num;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -207,15 +237,18 @@ public class TimePickerAlarm extends AppCompatActivity {
                 String test2 = mediname.realmediname;*/
 
 
-
                 //TelephonyManager tm = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
+
                 //String android_id = Settings.Secure.getString(this.getContentResolver(), Settings.Secure.ANDROID_ID);
-                //String medimediname = Mediname.alarmmediname;
+                //android_id = android_id.substring(8);
+
+               // String medimediname = Mediname.alarmmediname;
 
                 //givemedi = ((Mediname)Mediname.context).realmediname;
                 giveRealmedi = realmediname;
+                android_num = android_id;
                 Toast.makeText(getApplicationContext(), giveRealmedi+"약이 " +date_text + "으로 알람이 설정되었습니다!", Toast.LENGTH_SHORT).show();
-                new Server.Update_alarmList( android_id,  weekpr , date_text , giveRealmedi).execute("http://192.168.23.53:3306/insert");
+                new Server.Update_alarmList( android_num,  weekpr , date_text , giveRealmedi).execute("http://192.168.23.53:3306/insert");
                 //( [사용자 id] ,  [시간] , [day] ).
 
                 //  Preference에 설정한 값 저장

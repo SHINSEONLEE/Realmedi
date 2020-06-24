@@ -31,7 +31,7 @@ import org.w3c.dom.Text;
 
 public class SeecodeActivity extends AppCompatActivity {
     ActionBar actionBar;
-
+    public static String android_id;
     //private static String TAG = "휴대폰 정보 가져오기";
     //final TextView seecode = (TextView) findViewById(R.id.seecode);
 
@@ -65,12 +65,12 @@ public class SeecodeActivity extends AppCompatActivity {
         TextView seecode = findViewById(R.id.seecode);
         TelephonyManager tm = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
 
-        String android_id = Settings.Secure.getString(this.getContentResolver(), Settings.Secure.ANDROID_ID);
+        android_id = Settings.Secure.getString(this.getContentResolver(), Settings.Secure.ANDROID_ID);
         android_id = android_id.substring(8);
         //Log.d(TAG, android_id);
         // String android_id="088738928";
         //int id2 = Integer.parseInt(android_id);
-         seecode.setText(android_id);
+        seecode.setText(android_id);
 
     }
 }
