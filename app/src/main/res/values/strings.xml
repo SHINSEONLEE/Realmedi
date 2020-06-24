@@ -9,4 +9,10 @@
     <string name="mymedialarm">\'혈압약\'\n 먹을 시간\n 입니다.</string>
     <string name="mymedihowtouse">이용약관에 대해서 설명~~~신선이가 알려조</string>
     <string name="mymediintroduction">약묵자에 대한 앱 소개~~~ 신선이가 알려조</string>
+    <string name="alarmlist">Hello! this is alarmlist!</string>
+
+    <string name="FirstMessage">인식할 문자를 찍어주세요.</string>
+    <string name="LoadingMessage">잠시만 기다려주세요.결과가 여기에 나타납니다.</string>
+    <string name="CompleteMessage">문자인식이 완료되었습니다.</string>
+
 </resources>

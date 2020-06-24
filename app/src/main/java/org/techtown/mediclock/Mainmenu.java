@@ -66,20 +66,10 @@ public class Mainmenu extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_mainmenu);
         Mainmenu.context = getApplicationContext();
-
-
         actionBar = getSupportActionBar();
-        //actionBar.setLogo(R.drawable.home2); 약묵자 로고 넣으면 좋을 것 같은데
-        actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_HOME | ActionBar.DISPLAY_USE_LOGO);
-
-
-        //액션바 설정하기//
-        //액션바 타이틀 변경하기
-        getSupportActionBar().setTitle("App");
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(0xff006aff));
+        getSupportActionBar().setTitle("약 묵 자");
         //액션바 배경색 변경#368AFF
-        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(0xFF339999));
-        //홈버튼 표시
-        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
 
@@ -137,12 +127,12 @@ public class Mainmenu extends AppCompatActivity {
                 startActivity(intent_description);
             }
         });
-        setup();
+        //setup();
     }
     public static Context getAppContext() {
         return Mainmenu.context;
     }
-    private void setup() {
+   /* private void setup() {
         Button camera = (Button) findViewById(R.id.button2);
         iv = (ImageView) findViewById(R.id.iv);
 
@@ -160,5 +150,5 @@ public class Mainmenu extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data)
     {
         iv.setImageURI(data.getData());
-    }
+    }*/
 }

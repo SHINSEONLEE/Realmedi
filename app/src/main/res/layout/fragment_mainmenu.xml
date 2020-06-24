@@ -63,8 +63,5 @@
         android:layout_weight="1"
         android:text="이용약관 및 앱 소개"
         android:textSize="36sp" />
-    <ImageView
-        android:id="@+id/iv"
-        android:layout_width="match_parent"
-        android:layout_height="30dp" />
+
 </LinearLayout>
