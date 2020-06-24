@@ -1,28 +1,12 @@
 package org.techtown.mediclock;
-/*
-서버랑 연결하는 Class
-일단 완전히 완성된 건 insert랑 select해서 특정id꺼 가져오는 거!
-
-1) table 전체 가져오기
-    new Server.JSONTask1().execute("http://192.168.35.25:3306/person");
-
-2) 특정 사용자의 알람리스트 가져오기
-    new Server.Show_alarmList(  [사용자id] ).execute("http://192.168.35.25:3306/post" );
-    tvData.setText( Server.getResultFromDB() ); //화면띄우기
-
-3) 알람 추가하기
-    new Server.Update_alarmList( [사용자 id] ,  [시간] , [day] ).execute("http://192.168.35.25:3306/insert");
-
-4) 알람 수정하기 (미완)
-    new Server.JSONTask4().execute("http://192.168.35.25:3306/update" );
-*/
-
 
 import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.Toast;
 
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
@@ -38,6 +22,7 @@ import java.net.URL;
 
 
 public class Server {
+    static String SettingAlarmList ="";
     static String DBresult;
     Context context;
 
@@ -61,7 +46,7 @@ public class Server {
                 try {
                     URL url = new URL(urls[0]);
                     con = (HttpURLConnection) url.openConnection();
-                    con.connect();
+                    //   con.connect();
 
                     //입력 스트림 생성
                     InputStream stream = con.getInputStream();
@@ -114,8 +99,8 @@ public class Server {
         @Override
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
-            Log.e("HII","HHHHHHHERE");
-            //tvData.setText(result);
+            DBAnswer(result);
+            // tvData.setText(result);
         }
 
     }
@@ -193,6 +178,101 @@ public class Server {
             }
         }
     */
+//    public static class Show_alarmList extends AsyncTask<String, String, String>{
+//
+//        String alarm_user_code;
+//
+//        public Show_alarmList(String alarm_user_code) {
+//            this.alarm_user_code = alarm_user_code;
+//        }
+//        @Override
+//        protected void onPreExecute() {
+//            super.onPreExecute();
+//            //progress bar를 보여주는 등등의 행위
+//        }
+////        protected void onPreExecute() {
+////            Log.e("HERE...","OnPREEXECUTE");
+//        @Override
+//        protected String doInBackground(String... urls) {
+//            try {
+//                //JSONObject를 만들고 key value 형식으로 값을 저장해준다.
+//                JSONObject jsonObject = new JSONObject();
+//
+//                jsonObject.accumulate("alarm_user_code", alarm_user_code); //(2):찾으려는 요소 넣기
+//
+//
+//                HttpURLConnection con = null;
+//                BufferedReader reader = null;
+//
+//                try{
+//                    URL url = new URL(urls[0]);
+//                    //연결을 함
+//                    con = (HttpURLConnection) url.openConnection();
+//
+//
+//                    con.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");//application JSON 형식으로 전송
+//                    con.setRequestMethod("POST");//POST방식으로 보냄
+//                    con.setRequestProperty("Cache-Control", "no-cache");//캐시 설정
+//
+//                    con.setRequestProperty("Accept", "application/x-www-form-urlencoded");//서버에 response 데이터를 html로 받음
+//                    con.setDoOutput(true);//Outstream으로 post 데이터를 넘겨주겠다는 의미
+//                    con.setDoInput(true);//Inputstream으로 서버로부터 응답을 받겠다는 의미
+//                    con.connect();
+//
+//                    //서버로 보내기위해서 스트림 만듬
+//                    OutputStream outStream = con.getOutputStream();
+//                    //버퍼를 생성하고 넣음
+//                    BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(outStream));
+//                    Log.e("Json?",jsonObject.toString());
+//                    writer.write(jsonObject.toString());
+//                    writer.flush();
+//                    writer.close();//버퍼를 받아줌
+//
+//                    //서버로 부터 데이터를 받음
+//                    InputStream stream = con.getInputStream();
+//
+//                    reader = new BufferedReader(new InputStreamReader(stream));
+//
+//                    StringBuffer buffer = new StringBuffer();
+//
+//                    String line = "";
+//                    while((line = reader.readLine()) != null){
+//                        buffer.append(line);
+//                    }
+//                  return buffer.toString();//서버로 부터 받은 값을 리턴해줌 아마 OK!!가 들어올것임
+//
+//                } catch (MalformedURLException e){
+//                    e.printStackTrace();
+//                } catch (IOException e) {
+//                    e.printStackTrace();
+//                } finally {
+//                    if(con != null){
+//                        con.disconnect();
+//                    }
+//                    try {
+//                        if(reader != null){
+//                            reader.close();//버퍼를 닫아줌
+//                        }
+//                    } catch (IOException e) {
+//                        e.printStackTrace();
+//                    }
+//                }
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//            }
+//
+//            return null;
+//        }
+//
+//        @Override
+//        protected void onPostExecute(String result) {
+//            super.onPostExecute(result);
+//            Toast.makeText(MainActivity.getAppContext(), result, Toast.LENGTH_SHORT).show();
+//            DBAnswer(result);
+//        }
+//    }
+
+
     public static class Show_alarmList extends AsyncTask<String, String, String>{
 
         String alarm_user_code;
@@ -200,6 +280,13 @@ public class Server {
         public Show_alarmList(String alarm_user_code) {
             this.alarm_user_code = alarm_user_code;
         }
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            //progress bar를 보여주는 등등의 행위
+        }
+        //        protected void onPreExecute() {
+//            Log.e("HERE...","OnPREEXECUTE");
         @Override
         protected String doInBackground(String... urls) {
             try {
@@ -216,6 +303,7 @@ public class Server {
                     URL url = new URL(urls[0]);
                     //연결을 함
                     con = (HttpURLConnection) url.openConnection();
+
 
                     con.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");//application JSON 형식으로 전송
                     con.setRequestMethod("POST");//POST방식으로 보냄
@@ -246,7 +334,6 @@ public class Server {
                     while((line = reader.readLine()) != null){
                         buffer.append(line);
                     }
-
                     return buffer.toString();//서버로 부터 받은 값을 리턴해줌 아마 OK!!가 들어올것임
 
                 } catch (MalformedURLException e){
@@ -275,9 +362,54 @@ public class Server {
         @Override
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
-            //Toast toastView = Toast.makeText(getApplicationContext(), "약 이름이 설정되었습니다", Toast.LENGTH_LONG);
-            Toast.makeText(Mainmenu.getAppContext(), result, Toast.LENGTH_SHORT).show();
-            DBAnswer(result);
+//                String SettingAlarmList ="";
+            //           >>>>>>>>>>>>>>>>>>  parsing 하는 부분 : SettingAlarmList에 시간을 스트링으로 담아 출력함
+            try {
+                JSONArray jsonArray= new JSONArray(result);
+
+//                String SettingAlarmList ="";
+
+                for(int i=0; i<jsonArray.length();i++){
+
+                    JSONObject jo=jsonArray.getJSONObject(i);
+                    String alarm_name = jo.getString("alarm_name");
+                    Log.e("alarm_name : ", alarm_name );
+
+                    JSONObject jo2=jsonArray.getJSONObject(i);
+                    String day = jo2.getString("day");
+                    Log.e("day : ", day );
+
+                    if(i == 0) {
+                        SettingAlarmList += "설정하신 알람 목록입니다. \n" ; }
+                    if(i != jsonArray.length()-1) {
+                        SettingAlarmList += "알람이름 "+ alarm_name+ " ";
+                        SettingAlarmList += "알람 설정 시간 "+day+ " \n ";
+                    }else{
+                        SettingAlarmList += "알람이름 "+ alarm_name+ " ";
+                        SettingAlarmList += "알람 설정 시간 "+day+ " 입니다.";
+                        DBresult= SettingAlarmList;
+                        Log.e("DBresult",DBresult);
+                        //DBAnswer(SettingAlarmList);
+                    }
+//
+//                    else {
+//                        SettingAlarmList += " 끝입니다. ";
+//                        //SettingAlarmList += day+ " 입니다. ";
+//                        //SettingAlarmList +=  + " 입니다. ";
+//                    }
+                    //  JSONObject flag=jo.getJSONObject("flag");
+
+                }
+                Log.e("TIME & DAY : ", SettingAlarmList );
+                SettingAlarmList = "";
+            } catch (JSONException e) {
+                Log.e("JSON","JSON으로 변환 못해서 가져오는 중");
+                e.printStackTrace();
+            }
+
+            // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<< parsing 된 부분 추가 끝
+//Toast.makeText(MainActivity.getAppContext(), result, Toast.LENGTH_SHORT).show();
+            //DBAnswer(SettingAlarmList);
         }
     }
 
@@ -285,11 +417,13 @@ public class Server {
         String alarm_user_code;
         String time;
         String day;
+        String alarm_name;
 
-        public Update_alarmList(String alarm_user_code,String time, String day) {
+        public Update_alarmList(String alarm_user_code,String time, String day,String alarm_name) {
             this.alarm_user_code = alarm_user_code;
             this.time = time ;
             this.day = day;
+            this.alarm_name = alarm_name;
         }
 
         @Override
@@ -301,6 +435,8 @@ public class Server {
                 jsonObject.accumulate("time", time);
                 jsonObject.accumulate("day", day);
                 jsonObject.accumulate("alarm_user_code", alarm_user_code); //(2)찾으려는 요소 넣기
+                jsonObject.accumulate("alarm_name", alarm_name);
+
 
 
 
@@ -372,7 +508,7 @@ public class Server {
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
             //tvData.setText(result);//서버로 부터 받은 값을 출력해주는 부분
-            Toast.makeText(Mainmenu.getAppContext(), time+"시 "+day+"요일 알람이 새로 업데이트 되었습니다.",Toast.LENGTH_LONG).show();
+            //Toast.makeText(MainActivity.getAppContext(), time+"시 "+day+"요일 알람이 새로 업데이트 되었습니다.",Toast.LENGTH_LONG).show();
         }
     } //완성
 
@@ -462,8 +598,10 @@ public class Server {
 
     public static void DBAnswer (String result){
         DBresult = result;
+        Log.e("DBresult",DBresult);
     }
     public static String getResultFromDB(){
+        Log.e("getREsultFromDB","화면에 줄 결과값"+DBresult);
         return  DBresult;
     }
 

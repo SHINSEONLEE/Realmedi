@@ -107,7 +107,7 @@ public class Mainmenu extends AppCompatActivity {
         button3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent_mediname = new Intent(getApplicationContext(), Mediname.class);
+                Intent intent_mediname = new Intent(getApplicationContext(), alarmsetlist.class);
                 startActivity(intent_mediname);
             }
         });

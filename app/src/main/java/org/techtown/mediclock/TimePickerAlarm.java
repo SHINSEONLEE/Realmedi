@@ -28,7 +28,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.Locale;
-
+import static org.techtown.mediclock.Mediname.realmediname;
 import static org.techtown.mediclock.Mediweek.ev_pr;
 import static org.techtown.mediclock.Mediweek.fri_pr;
 import static org.techtown.mediclock.Mediweek.mon_pr;
@@ -39,7 +39,9 @@ import static org.techtown.mediclock.Mediweek.tue_pr;
 import static org.techtown.mediclock.Mediweek.wed_pr;
 
 public class TimePickerAlarm extends AppCompatActivity {
+    //private Mediname mediname;
     ActionBar actionBar;
+    String giveRealmedi;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -200,12 +202,20 @@ public class TimePickerAlarm extends AppCompatActivity {
                     //Toast.makeText(getApplicationContext(), "월요일 " + date_text + "으로 알람이 설정되었습니다!", Toast.LENGTH_SHORT).show();  //calender에 저장되어 있는 time 가져와서 date_text에 넣기
                 }
 
+               /* mediname = (Mediname)getApplicationContext();
+                mediname.AAA();
+                String test2 = mediname.realmediname;*/
 
-                Toast.makeText(getApplicationContext(),  date_text + "으로 알람이 설정되었습니다!", Toast.LENGTH_SHORT).show();
+
 
                 //TelephonyManager tm = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
                 //String android_id = Settings.Secure.getString(this.getContentResolver(), Settings.Secure.ANDROID_ID);
-                new Server.Update_alarmList( android_id,  weekpr , date_text ).execute("http://192.168.23.164:3306/insert");
+                //String medimediname = Mediname.alarmmediname;
+
+                //givemedi = ((Mediname)Mediname.context).realmediname;
+                giveRealmedi = realmediname;
+                Toast.makeText(getApplicationContext(), giveRealmedi+"약이 " +date_text + "으로 알람이 설정되었습니다!", Toast.LENGTH_SHORT).show();
+                new Server.Update_alarmList( android_id,  weekpr , date_text , giveRealmedi).execute("http://192.168.23.53:3306/insert");
                 //( [사용자 id] ,  [시간] , [day] ).
 
                 //  Preference에 설정한 값 저장
@@ -215,6 +225,7 @@ public class TimePickerAlarm extends AppCompatActivity {
 
 
                 diaryNotification(calendar);
+
                 Intent intent_mainmenu = new Intent(getApplicationContext(),AlarmList.class); //다음 액티비티 화면으로 전환
                 startActivity(intent_mainmenu);
             }

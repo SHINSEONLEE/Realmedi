@@ -43,7 +43,7 @@
             android:theme="@style/zxing_CaptureTheme"
             android:windowSoftInputMode="stateAlwaysHidden" />
 
-
+        <activity android:name=".alarmsetlist" />
         <activity android:name=".Show_morning" />
         <activity android:name=".BarcodeActivity" />
         <activity android:name=".AlarmList" />
