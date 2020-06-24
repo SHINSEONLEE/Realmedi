@@ -111,29 +111,22 @@ protected void onCreate(Bundle savedInstanceState) {
     setContentView(R.layout.fragment_search);
 
     actionBar = getSupportActionBar();
-    //actionBar.setLogo(R.drawable.home2); 약묵자 로고 넣으면 좋을 것 같은데
-    actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_HOME | ActionBar.DISPLAY_USE_LOGO);
-
-
-    //액션바 설정하기//
-    //액션바 타이틀 변경하기
-    getSupportActionBar().setTitle("App");
+    getSupportActionBar().setBackgroundDrawable(new ColorDrawable(0xff006aff));
+    getSupportActionBar().setTitle("약 묵 자");
     //액션바 배경색 변경#368AFF
-    getSupportActionBar().setBackgroundDrawable(new ColorDrawable(0xFF339999));
-    //홈버튼 표시
-    //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
 
     Button button1 = findViewById(R.id.QR_searchbtn);
-    button1.setOnClickListener(new View.OnClickListener(){
+    button1.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Intent intent_barcode= new Intent(getApplicationContext(), BarcodeActivity.class); //일단 바로 검색결과 띄음
+            Intent intent_barcode = new Intent(getApplicationContext(), BarcodeActivity.class); //일단 바로 검색결과 띄음
             startActivity(intent_barcode);
         }
     });
 
     Button button2 = findViewById(R.id.photo_searchbtn);
-    button2.setOnClickListener(new View.OnClickListener(){
+    button2.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             Intent intent_search_list = new Intent(getApplicationContext(), Search_Photo.class); //일단 바로 검색결과 띄음
@@ -142,14 +135,14 @@ protected void onCreate(Bundle savedInstanceState) {
     });
 
     Button button3 = findViewById(R.id.text_searchbtn);
-    button3.setOnClickListener(new View.OnClickListener(){
+    button3.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Intent intent_search_list = new Intent(getApplicationContext(),  Search_List.class); //일단 바로 검색결과 띄음
+            Intent intent_search_list = new Intent(getApplicationContext(), Search_Text.class); //일단 바로 검색결과 띄음
             startActivity(intent_search_list);
         }
     });
-    setup();
+ /*   setup();
 
 }
     private void setup() {
@@ -166,11 +159,13 @@ protected void onCreate(Bundle savedInstanceState) {
         });
     }
 
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data)
     {
         iv.setImageURI(data.getData());
-    }
+    }*/
+}
 }
 
 
