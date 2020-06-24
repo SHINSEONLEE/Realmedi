@@ -6,20 +6,18 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.telephony.TelephonyManager;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import static org.techtown.mediclock.WritecodeActivity.usercode;
 import android.widget.TextView;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
-import static org.techtown.mediclock.Server.getResultFromDB;
-
-public class AlarmList extends AppCompatActivity {
+public class CodeAlarmlist extends AppCompatActivity {
 
     ActionBar actionBar;
-    String android_sub;
+    String giveUsercode;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -41,7 +39,7 @@ public class AlarmList extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.alarm_list);
+        setContentView(R.layout.code_alarm_list);
 
         TextView alarmList = (TextView)findViewById(R.id.alarmlist);
         actionBar = getSupportActionBar();
@@ -49,11 +47,9 @@ public class AlarmList extends AppCompatActivity {
         getSupportActionBar().setTitle("약 묵 자");
         //액션바 배경색 변경#368AFF
 
+        giveUsercode = usercode;
 
-        TelephonyManager tm = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
-        String android_id = Settings.Secure.getString(this.getContentResolver(), Settings.Secure.ANDROID_ID);
-        android_sub = android_id.substring(8);
-        new Server.Show_alarmList( android_sub ).execute("http://192.168.23.53:3306/post" );
+        new Server.Show_alarmList( giveUsercode ).execute("http://192.168.23.53:3306/post" );
         alarmList.setText(Server.getResultFromDB());
         //Log.e("DB",Server.getResultFromDB());
         //tvData.setText( Server.getResultFromDB() ); //화면띄우기

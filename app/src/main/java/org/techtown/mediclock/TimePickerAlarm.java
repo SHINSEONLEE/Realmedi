@@ -246,7 +246,7 @@ public class TimePickerAlarm extends AppCompatActivity {
 
                 //givemedi = ((Mediname)Mediname.context).realmediname;
                 giveRealmedi = realmediname;
-                android_num = android_id;
+                android_num = android_id.substring(8);
                 Toast.makeText(getApplicationContext(), giveRealmedi+"약이 " +date_text + "으로 알람이 설정되었습니다!", Toast.LENGTH_SHORT).show();
                 new Server.Update_alarmList( android_num,  weekpr , date_text , giveRealmedi).execute("http://192.168.23.53:3306/insert");
                 //( [사용자 id] ,  [시간] , [day] ).

@@ -44,6 +44,7 @@
             android:windowSoftInputMode="stateAlwaysHidden" />
 
         <activity android:name=".alarmsetlist" />
+        <activity android:name=".CodeAlarmlist" />
         <activity android:name=".Show_morning" />
         <activity android:name=".BarcodeActivity" />
         <activity android:name=".AlarmList" />

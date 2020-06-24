@@ -19,6 +19,7 @@ import androidx.fragment.app.Fragment;
 
 public class WritecodeActivity extends AppCompatActivity {
     ActionBar actionBar;
+    public static String usercode;
 
 
     @Override
@@ -42,21 +43,21 @@ public class WritecodeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_writecode);
-        EditText inputcode = (EditText)findViewById(R.id.inputcode);
         actionBar = getSupportActionBar();
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(0xff006aff));
         getSupportActionBar().setTitle("약 묵 자");
         //액션바 배경색 변경#368AFF
 
-        Editable writecode = inputcode.getText();
+        final EditText inputcode = (EditText)findViewById(R.id.inputcode);
+
+        usercode = inputcode.getText().toString();
 
         Button button = findViewById(R.id.confirmwritecode_btn);
         button.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Intent intent_shareactivity = new Intent(getApplicationContext(), AlarmList.class); //일단 바로 검색결과 띄음
+                Intent intent_shareactivity = new Intent(getApplicationContext(), CodeAlarmlist.class); //일단 바로 검색결과 띄음
                 startActivity(intent_shareactivity);
-
             }
         });
 
