@@ -1,3 +1,4 @@
+/*
 package org.techtown.mediclock;
 
 import android.content.Context;
@@ -8,7 +9,7 @@ import android.provider.Settings;
 import android.telephony.TelephonyManager;
 import android.view.Menu;
 import android.view.MenuItem;
-import static org.techtown.mediclock.WritecodeActivity.usercode;
+
 import android.widget.TextView;
 
 import androidx.appcompat.app.ActionBar;
@@ -57,4 +58,4 @@ public class CodeAlarmlist extends AppCompatActivity {
 }
 
 
-
+*/

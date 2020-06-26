@@ -6,6 +6,7 @@ import android.content.ComponentName;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.drawable.ColorDrawable;
@@ -276,6 +277,14 @@ public class TimePickerAlarm extends AppCompatActivity {
         PackageManager pm = this.getPackageManager();
         ComponentName receiver = new ComponentName(this, DeviceBootReceiver.class);
         Intent alarmIntent = new Intent(this, AlarmReceiver.class);
+      //  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> ALARMRECEIVER로 넘겨주기 수정부분 - 시작 -
+        IntentFilter filter = new IntentFilter();
+        filter.addAction(Intent.ACTION_ANSWER);
+
+        Log.e("NOW POSITION  :  ","TIMEPICKER ");
+
+
+        //  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> ALARMRECEIVER로 넘겨주기 수정부분 - 끝 -
         PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, alarmIntent, 0);
         AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
 

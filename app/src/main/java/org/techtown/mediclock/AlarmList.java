@@ -21,6 +21,8 @@ import java.util.ArrayList;
 import java.util.Dictionary;
 
 import static org.techtown.mediclock.Server.getResultFromDB;
+import static org.techtown.mediclock.WritecodeActivity.shareFlag;
+import static org.techtown.mediclock.WritecodeActivity.sharedArrayList;
 import static org.techtown.mediclock.alarmsetlist.alarmArrayList;
 
 public class AlarmList extends AppCompatActivity {
@@ -79,8 +81,14 @@ public class AlarmList extends AppCompatActivity {
             alarm_recyclerView.setLayoutManager(alarm_LinearLayoutManager);
 
         Log.e("222222222222","미리 만들어진LIST 띄울거 만드는 중");
-            alarmArrayList2 = new ArrayList<>();
+        alarmArrayList2 = new ArrayList<>();
+        if(shareFlag==1){ //공유됐을 때
+         alarmArrayList2 = sharedArrayList;
+         Log.e("Shared List -알람L ", String.valueOf(sharedArrayList.size()));
+        }else{
             alarmArrayList2 = alarmArrayList;
+            shareFlag =0;
+        }
             alarmListAdapter = new AlarmListAdapter(alarmArrayList2);
             alarm_recyclerView.setAdapter(alarmListAdapter);
 

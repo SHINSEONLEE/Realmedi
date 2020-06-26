@@ -24,6 +24,8 @@ import java.util.Dictionary;
 
 
 import static org.techtown.mediclock.AlarmList.flag;
+import static org.techtown.mediclock.WritecodeActivity.shareFlag;
+import static org.techtown.mediclock.WritecodeActivity.sharedArrayList;
 import static org.techtown.mediclock.alarmsetlist.alarmArrayList;
 
 
@@ -285,6 +287,8 @@ public class Server {
 
         public Show_alarmList(String alarm_user_code) {
             this.alarm_user_code = alarm_user_code;
+            Log.e("USER_CODE ADDED",alarm_user_code);
+            Log.e("너가 문제니?2222",alarm_user_code);
         }
         @Override
         protected void onPreExecute() {
@@ -386,21 +390,26 @@ public class Server {
                     Log.e("day : ", day );
 
                     if(i == 0) {
-
                         SettingAlarmList += "설정하신 알람 목록입니다. \n" ; }
                     if(i != jsonArray.length()-1) {
 
                         AlarmListFromDB data =  new AlarmListFromDB(alarm_name,day);
-                        alarmArrayList.add(data);
-
+                        if(shareFlag==1){
+                            sharedArrayList.add(data);
+                            Log.e("Shared List-서버 ", String.valueOf(sharedArrayList.size()));
+                        }else{
+                            alarmArrayList.add(data);
+                        }
                         SettingAlarmList += "알람이름 "+ alarm_name+ " ";
                         SettingAlarmList += "알람 설정 시간 "+day+ " \n ";
-                        Log.e("alarmArrayList - 1 : ", String.valueOf(alarmArrayList.size()));
                     }else{
-
                         AlarmListFromDB data =  new AlarmListFromDB(alarm_name,day);
-                        alarmArrayList.add(data);
-                        Log.e("alarmArrayList - 2 : ", String.valueOf(alarmArrayList.size()));
+                        if(shareFlag==1){
+                            sharedArrayList.add(data);
+                        }else{
+                            alarmArrayList.add(data);
+                        }
+
                         Log.e("지금 CLASS Alarmsetlist에서","미리 만들어지는 중입니다.");
 
 
@@ -419,7 +428,7 @@ public class Server {
                     //  JSONObject flag=jo.getJSONObject("flag");
                 }
                 Log.e("TIME & DAY : ", SettingAlarmList );
-                Log.e("alarmArrayList - 3 : ", String.valueOf(alarmArrayList.size()));
+
 
                 SettingAlarmList = "";
             } catch (JSONException e) {

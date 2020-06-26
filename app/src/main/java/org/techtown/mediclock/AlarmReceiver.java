@@ -7,6 +7,8 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 
 import androidx.core.app.NotificationCompat;
@@ -20,12 +22,26 @@ import java.util.Locale;
 import static android.content.Context.MODE_PRIVATE;
 
 public class AlarmReceiver extends BroadcastReceiver {
+
     @Override
     public void onReceive(Context context, Intent intent) {
 
-
         NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+
+
+        //>>>>>>>>>>>> TIMEPICKER 에서 받아오기 - 시작 -
+        if(intent.getAction().equals(Intent.ACTION_ANSWER)){
+            Log.e("NOW POSITION  :  ","ALARM RECEIVER");
+        }else{
+            Log.e("NOW POSITION  :  ","NO ANSEWER NOW BUT I'M IN RECEIVER");
+        }
+
         Intent notificationIntent = new Intent(context, TimePickerAlarm.class);
+        Log.e("NOW POSITION  :  ","ALARM RECEIVER");
+
+
+
+        //>>>>>>>>>>>> TIMEPICKER 에서 받아오기 - 끝 -
 
         notificationIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP
                 | Intent.FLAG_ACTIVITY_SINGLE_TOP);

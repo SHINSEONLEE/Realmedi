@@ -71,6 +71,7 @@ public class Mainmenu extends AppCompatActivity {
         actionBar = getSupportActionBar();
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(0xff006aff));
         getSupportActionBar().setTitle("약 묵 자");
+
         //액션바 배경색 변경#368AFF
 
 
