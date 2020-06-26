@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.provider.Settings;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -18,10 +19,11 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import java.util.ArrayList;
+import java.util.Dictionary;
+
 public class Mainmenu extends AppCompatActivity {
     private  static Context context;
-
-
     ActionBar actionBar;
 
     /*
@@ -151,4 +153,5 @@ public class Mainmenu extends AppCompatActivity {
     {
         iv.setImageURI(data.getData());
     }*/
+
 }

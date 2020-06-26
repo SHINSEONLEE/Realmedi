@@ -3,6 +3,7 @@ package org.techtown.mediclock;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -15,6 +16,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+
 
 public class Medialarm extends AppCompatActivity {
   /*  @Override
@@ -66,7 +68,6 @@ public class Medialarm extends AppCompatActivity {
         button1.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-
                 Intent intent_meditime = new Intent(getApplicationContext(), AlarmList.class); //일단 바로 검색결과 띄음
                 startActivity(intent_meditime);
 

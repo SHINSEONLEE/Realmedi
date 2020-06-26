@@ -13,13 +13,24 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.ArrayList;
+import java.util.Dictionary;
 
 import static org.techtown.mediclock.Server.getResultFromDB;
+import static org.techtown.mediclock.alarmsetlist.alarmArrayList;
 
 public class AlarmList extends AppCompatActivity {
 
     ActionBar actionBar;
     String android_sub;
+    protected static ArrayList<AlarmListFromDB> alarmArrayList2;
+    private AlarmListAdapter alarmListAdapter;
+    public static int flag = 0;
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -41,24 +52,50 @@ public class AlarmList extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.alarm_list);
+        //  setContentView(R.layout.alarm_list);
+        setContentView(R.layout.alarm_list_recyclerview); //xml 변경
 
-        TextView alarmList = (TextView)findViewById(R.id.alarmlist);
+       // alarmArrayList = new ArrayList<>();
+//        AlarmListFromDB data =  new AlarmListFromDB("test이름","test 번호");
+//        alarmArrayList.add(data);
+   //     Log.e("AlarmArrayList 사이즈", String.valueOf(alarmArrayList.size()));
+
+
+        TextView alarmList = (TextView) findViewById(R.id.alarmlist);
         actionBar = getSupportActionBar();
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(0xff006aff));
         getSupportActionBar().setTitle("약 묵 자");
         //액션바 배경색 변경#368AFF
-
-
         TelephonyManager tm = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
         String android_id = Settings.Secure.getString(this.getContentResolver(), Settings.Secure.ANDROID_ID);
         android_sub = android_id.substring(8);
-        new Server.Show_alarmList( android_sub ).execute("http://192.168.23.53:3306/post" );
-        alarmList.setText(Server.getResultFromDB());
-        //Log.e("DB",Server.getResultFromDB());
-        //tvData.setText( Server.getResultFromDB() ); //화면띄우기
-    }
+
+        //new Server.Show_alarmList( android_sub ).execute("http://192.168.35.25:3306/post" );
+        // alarmList.setText(Server.getResultFromDB());
+
+        //>>>>>>>>>>>> RecyclerView 수정부분 - 시작 -
+            RecyclerView alarm_recyclerView = (RecyclerView) findViewById(R.id.alarm_list_recyclerview);
+            LinearLayoutManager alarm_LinearLayoutManager = new LinearLayoutManager(this);
+            alarm_recyclerView.setLayoutManager(alarm_LinearLayoutManager);
+
+        Log.e("222222222222","미리 만들어진LIST 띄울거 만드는 중");
+            alarmArrayList2 = new ArrayList<>();
+            alarmArrayList2 = alarmArrayList;
+            alarmListAdapter = new AlarmListAdapter(alarmArrayList2);
+            alarm_recyclerView.setAdapter(alarmListAdapter);
+
+            DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(alarm_recyclerView.getContext(),
+                    alarm_LinearLayoutManager.getOrientation());
+            alarm_recyclerView.addItemDecoration(dividerItemDecoration);
+
+            alarmListAdapter.notifyDataSetChanged();
+            //>>>>>>>>>>>> RecyclerView 수정부분 - 끝 -
+
+        }
+
+
 }
+
 
 
 

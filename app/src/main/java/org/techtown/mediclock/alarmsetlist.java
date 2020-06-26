@@ -3,6 +3,8 @@ package org.techtown.mediclock;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.provider.Settings;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -11,8 +13,12 @@ import android.widget.Button;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class alarmsetlist extends AppCompatActivity {
+import java.util.ArrayList;
 
+import static org.techtown.mediclock.SeecodeActivity.android_id;
+
+public class alarmsetlist extends AppCompatActivity {
+    protected static ArrayList<AlarmListFromDB> alarmArrayList;
     ActionBar actionBar;
 
     @Override
@@ -39,7 +45,19 @@ public class alarmsetlist extends AppCompatActivity {
         actionBar = getSupportActionBar();
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(0xff006aff));
         getSupportActionBar().setTitle("약 묵 자");
-        //액션바 배경색 변경#368AFF
+
+        //>>>>> 미리 List만들기 수정한 부분 - 시작 -
+
+        String get_android_id =  Settings.Secure.getString(this.getContentResolver(), Settings.Secure.ANDROID_ID).substring(8);
+        alarmArrayList = new ArrayList<>();
+        Log.e("GET_ANDROID_ID",get_android_id);
+
+        new Server.Show_alarmList( get_android_id).execute("http://192.168.23.53:3306/post" ); //list를 여기서 만들기
+        Log.e("AlarmArrayList","만들어짐 + 서버다녀오기");
+        // >>>>> 미리 List만들기 수정한 부분 - 끝 -
+
+
+        // 액션바 배경색 변경#368AFF
 
         Button button = findViewById(R.id.setAlarm);
         button.setOnClickListener(new View.OnClickListener() {

@@ -19,12 +19,19 @@ import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Dictionary;
+
+
+import static org.techtown.mediclock.AlarmList.flag;
+import static org.techtown.mediclock.alarmsetlist.alarmArrayList;
 
 
 public class Server {
     static String SettingAlarmList ="";
     static String DBresult;
     Context context;
+
 
     public Server(Context context) {
         this.context = context;
@@ -272,7 +279,6 @@ public class Server {
 //        }
 //    }
 
-
     public static class Show_alarmList extends AsyncTask<String, String, String>{
 
         String alarm_user_code;
@@ -380,11 +386,24 @@ public class Server {
                     Log.e("day : ", day );
 
                     if(i == 0) {
+
                         SettingAlarmList += "설정하신 알람 목록입니다. \n" ; }
                     if(i != jsonArray.length()-1) {
+
+                        AlarmListFromDB data =  new AlarmListFromDB(alarm_name,day);
+                        alarmArrayList.add(data);
+
                         SettingAlarmList += "알람이름 "+ alarm_name+ " ";
                         SettingAlarmList += "알람 설정 시간 "+day+ " \n ";
+                        Log.e("alarmArrayList - 1 : ", String.valueOf(alarmArrayList.size()));
                     }else{
+
+                        AlarmListFromDB data =  new AlarmListFromDB(alarm_name,day);
+                        alarmArrayList.add(data);
+                        Log.e("alarmArrayList - 2 : ", String.valueOf(alarmArrayList.size()));
+                        Log.e("지금 CLASS Alarmsetlist에서","미리 만들어지는 중입니다.");
+
+
                         SettingAlarmList += "알람이름 "+ alarm_name+ " ";
                         SettingAlarmList += "알람 설정 시간 "+day+ " 입니다.";
                         DBresult= SettingAlarmList;
@@ -398,9 +417,10 @@ public class Server {
 //                        //SettingAlarmList +=  + " 입니다. ";
 //                    }
                     //  JSONObject flag=jo.getJSONObject("flag");
-
                 }
                 Log.e("TIME & DAY : ", SettingAlarmList );
+                Log.e("alarmArrayList - 3 : ", String.valueOf(alarmArrayList.size()));
+
                 SettingAlarmList = "";
             } catch (JSONException e) {
                 Log.e("JSON","JSON으로 변환 못해서 가져오는 중");
